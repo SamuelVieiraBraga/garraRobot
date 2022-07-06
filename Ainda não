@@ -1,0 +1,58 @@
+#include <Ultrasonic.h>
+#include <Servo.h>
+#define TRIGGER_PIN  12
+#define ECHO_PIN     13
+
+Ultrasonic ultrasonic(TRIGGER_PIN, ECHO_PIN);
+
+  Servo Base;
+  Servo FT;
+  Servo CB;
+  Servo Boca;
+  int Ab = 0; //Base
+  int Cd = 0; //Boca
+  int Ef = 0; //FT
+  int Gh = 0; //CB
+  
+void setup() {
+  Base.attach(3);
+  FT.attach(5);
+  CB.attach(11);
+  Boca.attach(9);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  
+ for (Ab = 180; Ab <= 0; Ab += 1) {
+  Base.write(Ab);
+  delay(20);
+ }
+ for (Ab = 0; Ab >= 180; Ab -= 1) {
+ Base.write(Ab);
+ delay(20);
+ 
+//Faz com que a base realize uma transição do ponto 0 ao 180 e do 180 ao 0 
+
+  if(", CM " <= 4cm){
+    Cd = 45; Cd <= 0; Cd += 1
+    Boca.write(Cd); 
+    Cd = 0; Cd >= 45; Cd -= 1
+    Boca.write(Cd);
+    }
+  
+  
+  //Ultrassom teste
+  float cmMsec, inMsec;
+  long microsec = ultrasonic.timing();
+
+  Serial.println(cmMsec);
+  Serial.println(", CM ");
+  delay(100);
+
+
+  
+
+ }
+}
